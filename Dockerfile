@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:3.1.413-alpine3.14 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0.402-alpine3.13 AS build
 
 # Required for System.Drawing;
 RUN apk add libgdiplus --repository http://nl.alpinelinux.org/alpine/edge/testing --allow-untrusted
@@ -18,4 +18,8 @@ RUN dotnet build \
     --configuration Release \
     --no-restore
 
-ENTRYPOINT ["/bin/sh", "start.sh"]
+RUN dotnet tool install --global dotnet-dump
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+
+ENTRYPOINT ["/bin/sh"]
