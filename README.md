@@ -16,4 +16,8 @@ Tests always succeed.
 
 1. `docker build -t my-tests .`
 2. `docker run -it my-tests`
-3. Wait till it crashes. It often occures within 10 runs.
+3. ./start.sh
+4. Wait till it crashes. It often occures within 10 runs.
+
+5. dotnet-dump analyze <path to dump>
+6. `clrstack`
